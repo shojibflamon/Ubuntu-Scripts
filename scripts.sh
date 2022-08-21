@@ -793,9 +793,9 @@ installComposer() {
 
     2)
       echo -e "${TEXT_PURPLE} Uninstalling... ${TEXT_RESET}"
-      sudo apt --purge remove curl;
-      sudo apt autoclean;
-      sudo apt autoremove;
+#      sudo apt --purge remove curl;
+#      sudo apt autoclean;
+#      sudo apt autoremove;
       ;;
 
     *)
@@ -805,7 +805,65 @@ installComposer() {
     esac
 }
 
+installJava() {
+  echo -e "\n ${TEXT_GREEN} INSTALLATION Java .\n  Select 1 = Install,\n 2 = Uninstall,\n S = Skip\n ${TEXT_RESET}"
+  read action
+    case $action in
+    1)
+      echo -e "${TEXT_PURPLE} Check Java Version (java -version)... ${TEXT_RESET}"
+      java -version
 
+      echo -e "${TEXT_PURPLE} Installing... ${TEXT_RESET}"
+          sudo apt install default-jre;
+      echo  -e "${TEXT_CYAN} Installation Done... ${TEXT_RESET}"
+
+      echo -e "${TEXT_PURPLE} Check Java Version (java -version)... ${TEXT_RESET}"
+            java -version
+      ;;
+
+    2)
+      echo -e "${TEXT_PURPLE} Uninstalling... ${TEXT_RESET}"
+#      sudo apt --purge remove curl;
+#      sudo apt autoclean;
+#      sudo apt autoremove;
+      ;;
+
+    *)
+      echo -e "${TEXT_PURPLE} Skipping... ${TEXT_RESET}"
+      ;;
+
+    esac
+}
+
+installJavainstallJavaJdk() {
+  echo -e "\n ${TEXT_GREEN} INSTALLATION Java JDK .\n  Select 1 = Install,\n 2 = Uninstall,\n S = Skip\n ${TEXT_RESET}"
+  read action
+    case $action in
+    1)
+      echo -e "${TEXT_PURPLE} Check Java JDK Version (javac -version)... ${TEXT_RESET}"
+      javac -version
+
+      echo -e "${TEXT_PURPLE} Installing... ${TEXT_RESET}"
+          sudo apt install default-jdk;
+      echo  -e "${TEXT_CYAN} Installation Done... ${TEXT_RESET}"
+
+      echo -e "${TEXT_PURPLE} Check Java JDK Version (javac -version)... ${TEXT_RESET}"
+            javac -version
+      ;;
+
+    2)
+      echo -e "${TEXT_PURPLE} Uninstalling... ${TEXT_RESET}"
+#      sudo apt --purge remove curl;
+#      sudo apt autoclean;
+#      sudo apt autoremove;
+      ;;
+
+    *)
+      echo -e "${TEXT_PURPLE} Skipping... ${TEXT_RESET}"
+      ;;
+
+    esac
+}
 
 #RUN
 update
@@ -845,6 +903,8 @@ installWget
 actionOhMyZsh
 installTerminus
 installComposer
+installJava
+installJavaJdk
 
 
 
