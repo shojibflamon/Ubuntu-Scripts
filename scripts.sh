@@ -835,7 +835,7 @@ installJava() {
     esac
 }
 
-installJavainstallJavaJdk() {
+installJavaJdk() {
   echo -e "\n ${TEXT_GREEN} INSTALLATION Java JDK .\n  Select 1 = Install,\n 2 = Uninstall,\n S = Skip\n ${TEXT_RESET}"
   read action
     case $action in
