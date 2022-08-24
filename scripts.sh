@@ -716,7 +716,7 @@ actionOhMyZsh() {
       echo  -e "${TEXT_CYAN} Installation powerlevel10k theme done... ${TEXT_RESET}"
 
       echo  -e "${TEXT_CYAN} Now open .zshrc file and update following line
-          ZSH_THEME="powerlevel10k/powerlevel10k"
+          ZSH_THEME=\"powerlevel10k/powerlevel10k\"
           ${TEXT_RESET}"
 
 ##          p10k configure
