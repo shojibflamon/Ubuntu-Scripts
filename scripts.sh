@@ -250,24 +250,24 @@ actionPhpStorm() {
     case $action in
 
     1)
-      if [[ -e "PhpStorm-2022.1.2.tar.gz" ]]; then
+      if [[ -e "PhpStorm-2022.3.tar.gz" ]]; then
         echo -e "${TEXT_RED_B} File Exists... ${TEXT_RESET}"
       else
         echo -e "${TEXT_PURPLE} File Not Exists. Downloading... ${TEXT_RESET}"
-        wget https://download.jetbrains.com/webide/PhpStorm-2022.1.2.tar.gz
+        wget https://download.jetbrains.com/webide/PhpStorm-2022.3.tar.gz
         echo -e "${TEXT_CYAN} Downloading Complete  ${TEXT_RESET}"
       fi
         ;;
 
     2) 
-      if [[ -e "PhpStorm-2022.1.2.tar.gz" ]]; then
+      if [[ -e "PhpStorm-2022.3.tar.gz" ]]; then
         echo -e "${TEXT_PURPLE} File Exists. Installing... ${TEXT_RESET}"
         sudo tar -xzf PhpStorm-*.tar.gz -C /opt
 	      /opt/PhpStorm-*/bin/phpstorm.sh
 
       else
         echo -e "${TEXT_PURPLE} File Not Exists. Downloading... ${TEXT_RESET}"
-          wget https://download.jetbrains.com/webide/PhpStorm-2022.1.2.tar.gz
+          wget https://download.jetbrains.com/webide/PhpStorm-2022.3.tar.gz
           echo -e "${TEXT_CYAN} Downloading Complete ${TEXT_RESET}"
 
           echo -e "${TEXT_PURPLE} Installing... ${TEXT_RESET}"
