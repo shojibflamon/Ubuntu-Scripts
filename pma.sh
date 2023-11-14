@@ -103,9 +103,23 @@ actionPhpmyadmin() {
 
       echo -e "${TEXT_CYAN} tmp directory create... ${TEXT_RESET}"
       sudo mkdir -p /var/www/html/db/tmp
+      
+      echo -e "${TEXT_CYAN} give permission to nginx (www:data:www-data) in tmp directory... ${TEXT_RESET}"
+      sudo chown -R www-data:www-data tmp/
 
       echo -e "${TEXT_CYAN} config file configure... ${TEXT_RESET}"
       sudo cp /var/www/html/db/config.sample.inc.php /var/www/html/db/config.inc.php
+      
+      echo -e "${TEXT_CYAN} config file configure... ${TEXT_RESET}"
+      sudo cp /var/www/html/db/config.sample.inc.php /var/www/html/db/config.inc.php
+      
+      echo -e "${TEXT_CYAN} Generating blowfish_secret using pwgen ${TEXT_RESET}"
+      echo -e "${TEXT_CYAN} Generate a Sample 32 Characters Secred ... ${TEXT_RESET}"
+
+      pwgen -s 32 1
+      sleep 3
+      
+      echo -e "${TEXT_CYAN} Put this secret key in /var/www/html/db/config.inc.php (blowfish_secret) ... ${TEXT_RESET}"
 
       echo -e "${TEXT_CYAN} change ownership... ${TEXT_RESET}"
       sudo chown -R $USER:www-data /var/www/html/db/
@@ -113,6 +127,9 @@ actionPhpmyadmin() {
       echo -e "${TEXT_CYAN} change permission... ${TEXT_RESET}"
       sudo find /var/www/html/db/ -type d -exec chmod 755 {} \;
       sudo find /var/www/html/db/ -type f -exec chmod 644 {} \;
+      
+      echo -e "${TEXT_CYAN} give full permission tmp directory so that phpmyadmin can access... ${TEXT_RESET}"
+      sudo chown -R www-data:www-data tmp/
 
       echo -e "${TEXT_CYAN} Installation Done... ${TEXT_RESET}"
 
@@ -150,6 +167,15 @@ EOF
 
       echo -e "${TEXT_CYAN} config file configure... ${TEXT_RESET}"
       sudo cp /var/www/html/db/config.sample.inc.php /var/www/html/db/config.inc.php
+      
+      echo -e "${TEXT_CYAN} Generating blowfish_secret using pwgen ${TEXT_RESET}"
+      echo -e "${TEXT_CYAN} Generate a Sample 32 Characters Secred ... ${TEXT_RESET}"
+
+      pwgen -s 32 1
+      sleep 3
+      
+      echo -e "${TEXT_CYAN} Put this secret key in /var/www/html/db/config.inc.php (blowfish_secret) ... ${TEXT_RESET}"
+
 
       echo -e "${TEXT_CYAN} change ownership... ${TEXT_RESET}"
       sudo chown -R $USER:www-data /var/www/html/db/
@@ -157,6 +183,9 @@ EOF
       echo -e "${TEXT_CYAN} change permission... ${TEXT_RESET}"
       sudo find /var/www/html/db/ -type d -exec chmod 755 {} \;
       sudo find /var/www/html/db/ -type f -exec chmod 644 {} \;
+
+      echo -e "${TEXT_CYAN} give full permission tmp directory so that phpmyadmin can access... ${TEXT_RESET}"
+      sudo chown -R www-data:www-data tmp/
 
       echo -e "${TEXT_CYAN} Installation Done... ${TEXT_RESET}"
       echo -e "\n ${TEXT_GREEN} Create User root...\n ${TEXT_RESET}"
@@ -184,7 +213,7 @@ EOF
 }
 
 installPwgen() {
-  echo -e "\n ${TEXT_GREEN} INSTALLATION PWGEN.\n  Select 1 = Install,\n 2 = Uninstall,\n S = Skip\n ${TEXT_RESET}"
+  echo -e "\n ${TEXT_GREEN} INSTALLATION PWGEN. It is needed for generating secret that is need to put in phpmyadmin config.inc.php file (blowfish_secret) \n  Select 1 = Install,\n 2 = Uninstall,\n S = Skip\n ${TEXT_RESET}"
   read action
     case $action in
     1)
@@ -219,5 +248,6 @@ upgrade
 distUpgrade
 autoRemove
 
-actionPhpmyadmin
 installPwgen
+actionPhpmyadmin
+

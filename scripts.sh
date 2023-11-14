@@ -677,6 +677,38 @@ installCurl() {
     esac
 }
 
+
+installPhpAdditionalExtension() {
+  echo -e "\n ${TEXT_GREEN} INSTALLATION PHP Extension php7.4-mbstring.\n  Select 1 = Install,\n 2 = Uninstall,\n S = Skip\n ${TEXT_RESET}"
+  read action
+    case $action in
+    1)
+      echo -e "${TEXT_PURPLE} Installing... ${TEXT_RESET}"
+          sudo apt install php7.4-mbstring;
+          echo  -e "${TEXT_CYAN} Installation Done... ${TEXT_RESET}"
+          
+          echo  -e "${TEXT_CYAN} Test Extension ... ${TEXT_RESET}"
+
+      php -m | grep 'mbstring' -an2
+      sleep 3
+      
+      ;;
+
+    2)
+      echo -e "${TEXT_PURPLE} Uninstalling... ${TEXT_RESET}"
+      sudo apt --purge remove php7.4-mbstring;
+      sudo apt autoclean;
+      sudo apt autoremove;
+      ;;
+
+    *)
+      echo -e "${TEXT_PURPLE} Skipping... ${TEXT_RESET}"
+      ;;
+
+    esac
+}
+
+
 installWget() {
   echo -e "\n ${TEXT_GREEN} INSTALLATION Wget.\n  Select 1 = Install,\n 2 = Uninstall,\n S = Skip\n ${TEXT_RESET}"
   read action
@@ -938,6 +970,7 @@ installVpn
 installPwgen
 installCurl
 installWget
+installPhpAdditionalExtension
 actionOhMyZsh
 installTerminus
 installComposer
