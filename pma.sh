@@ -66,7 +66,7 @@ autoRemove() {
 }
 
 actionPhpmyadmin() {
-  echo -e "\n ${TEXT_GREEN} INSTALLATION Phpmyadmin.\n  Select 1 = Download Only,\n 2 = Download & Install,\n 3 = Update,\n 4 = Uninstall & Keep Configurations,\n 5 = Uninstall & Don't Keep Configurations,\n S = Skip\n ${TEXT_RESET}"
+  echo -e "\n ${TEXT_GREEN} INSTALLATION Phpmyadmin.\n  Select 1 = Download Only,\n 2 = Download & Install,\n 3 = Uninstall & Keep Configurations,\n S = Skip\n ${TEXT_RESET}"
   read action
   case $action in
 

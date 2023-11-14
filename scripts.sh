@@ -542,6 +542,19 @@ actionPhpForNginx() {
       	  sudo add-apt-repository ppa:ondrej/php;
           sudo apt install php7.4-fpm php7.4-mysql php7.4-curl php7.4-xml;
           echo  -e "${TEXT_CYAN} Installation Done... ${TEXT_RESET}"
+          
+          echo  -e "${TEXT_CYAN} Need to configure Nginx ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} Terminal... ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} sudo nano /etc/nginx/sites-available/default ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} Add index.php to the list if you are using PHP ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} Uncomment ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} location ~ \.php$ { ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} include snippets/fastcgi-php.conf; ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} fastcgi_pass unix:/run/php/php7.4-fpm.sock; ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} } ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} sudo nginx -t ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} sudo systemctl restart nginx.service ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} Test any php file ${TEXT_RESET}"
       ;;
     
     2)
