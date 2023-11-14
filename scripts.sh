@@ -460,6 +460,17 @@ actionMySql() {
       sudo service mysql status
 
       echo -e "${TEXT_CYAN} MySQL Version ${TEXT_RESET}"
+      
+      echo -e "${TEXT_CYAN} Login mysql using command: sudo mysql. ${TEXT_RESET}"
+      echo -e "${TEXT_CYAN} mysql command: show databases;. ${TEXT_RESET}"
+      echo -e "${TEXT_CYAN} mysql command: use mysql;. ${TEXT_RESET}"
+      echo -e "${TEXT_CYAN} mysql command: select user, host, authentication_string, plugin from user;. ${TEXT_RESET}"
+      echo -e "${TEXT_CYAN} mysql command: ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';. ${TEXT_RESET}"
+      echo -e "${TEXT_CYAN} mysql command: exit. ${TEXT_RESET}"
+      echo -e "${TEXT_CYAN} terminal command: mysql -u root -p;. ${TEXT_RESET}"
+      
+      
+      
       mysql -V
       sleep 5
       ;;
@@ -495,6 +506,20 @@ actionMySqlSecure() {
   read action
     case $action in
     1) 
+      echo -e "${TEXT_PURPLE} Installation Note ${TEXT_RESET}"
+      
+      echo -e "${TEXT_PURPLE} Enter Root Password : XXXX ${TEXT_RESET}"
+      echo -e "${TEXT_PURPLE} VALIDATE PASSWORD COMPONENT : Y ${TEXT_RESET}"
+      echo -e "${TEXT_PURPLE} Validation Lavels : 0=Local. 2=Production Env) ${TEXT_RESET}"
+      echo -e "${TEXT_PURPLE} Estimated Strength of Password : 25=Local. 100=Production Env ${TEXT_RESET}"
+      echo -e "${TEXT_PURPLE} Change the root Password : n=Local. Y=Production Env & Change strong password ${TEXT_RESET}"
+      echo -e "${TEXT_PURPLE} Remove anonymous users : Y ${TEXT_RESET}"
+      echo -e "${TEXT_PURPLE} Disallow root login remotely : Y ${TEXT_RESET}"
+      echo -e "${TEXT_PURPLE} Remove test database and access to it? : Y ${TEXT_RESET}"
+      echo -e "${TEXT_PURPLE} Reload privilege tables now? : Y ${TEXT_RESET}"
+      echo -e "${TEXT_PURPLE} Done ${TEXT_RESET}"
+      
+      
       echo -e "${TEXT_PURPLE} Installing... ${TEXT_RESET}"
           sudo mysql_secure_installation;
           echo  -e "${TEXT_CYAN} Installation Done... ${TEXT_RESET}"
@@ -783,7 +808,7 @@ installComposer() {
     1)
       echo -e "${TEXT_PURPLE} Installing... ${TEXT_RESET}"
           php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-          php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a611085589f1f3ddf8b3c52d662cd01d4ba75c0ee0459970c2200a51f492d557530c71c15d8dba01eae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+          php -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
           php composer-setup.php
           php -r "unlink('composer-setup.php');"
           echo  -e "${TEXT_CYAN} Composer Moving to /usr/local/bin... ${TEXT_RESET}"
