@@ -677,6 +677,30 @@ installCurl() {
     esac
 }
 
+installTree() {
+  echo -e "\n ${TEXT_GREEN} INSTALLATION Tree.\n  Select 1 = Install,\n 2 = Uninstall,\n S = Skip\n ${TEXT_RESET}"
+  read action
+    case $action in
+    1)
+      echo -e "${TEXT_PURPLE} Installing... ${TEXT_RESET}"
+          sudo apt install tree;
+          echo  -e "${TEXT_CYAN} Installation Done... ${TEXT_RESET}"
+      ;;
+
+    2)
+      echo -e "${TEXT_PURPLE} Uninstalling... ${TEXT_RESET}"
+      sudo apt --purge remove tree;
+      sudo apt autoclean;
+      sudo apt autoremove;
+      ;;
+
+    *)
+      echo -e "${TEXT_PURPLE} Skipping... ${TEXT_RESET}"
+      ;;
+
+    esac
+}
+
 
 installPhpAdditionalExtension() {
   echo -e "\n ${TEXT_GREEN} INSTALLATION PHP Extension php7.4-mbstring.\n  Select 1 = Install,\n 2 = Uninstall,\n S = Skip\n ${TEXT_RESET}"
@@ -969,6 +993,7 @@ actionGit
 installVpn
 installPwgen
 installCurl
+installTree
 installWget
 installPhpAdditionalExtension
 actionOhMyZsh
