@@ -13,3 +13,6 @@ sudo update-alternatives --set php /usr/bin/php7.4 > /dev/null
 
 echo "* Switch to PHP 7.4 complete."
 
+
+echo "* Restart apache"
+sudo systemctl restart apache2.service
