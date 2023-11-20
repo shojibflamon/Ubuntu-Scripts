@@ -533,7 +533,7 @@ actionMySqlSecure() {
 }
 
 
-actionPhpForNginx() {
+actionPhp7.4ForNginx() {
   echo -e "\n ${TEXT_GREEN} INSTALLATION PHP 7.4 with php7.4-fpm, php7.4-mysql, php7.4-curl & php7.4-xml extension for Nginx.\n  Select 1 = Install,\n 2 = Uninstall,\n S = Skip\n ${TEXT_RESET}"
   read action
     case $action in
@@ -570,6 +570,50 @@ actionPhpForNginx() {
 
     esac
 }
+
+
+
+
+actionPhp8.2ForNginx() {
+  echo -e "\n ${TEXT_GREEN} INSTALLATION PHP 8.2 with php8.2-fpm, php8.2-cli, php8.2-gd, php8.2-common, php8.2-opcache, php8.2-readline, php8.2-mbstring, php8.2-bcmath, php8.2-zip, php8.2-mysql, php8.2-curl & php8.2-xml extension for Nginx.\n  Select 1 = Install,\n 2 = Uninstall,\n S = Skip\n ${TEXT_RESET}"
+  read action
+    case $action in
+    1) 
+      echo -e "${TEXT_PURPLE} Installing... ${TEXT_RESET}"
+      	  sudo add-apt-repository ppa:ondrej/php;
+          sudo apt install php8.2-fpm php8.2-cli php8.2-gd php8.2-common php8.2-opcache php8.2-readline php8.2-mbstring php8.2-bcmath php8.2-zip php8.2-mysql php8.2-curl php8.2-xml;
+          echo  -e "${TEXT_CYAN} Installation Done... ${TEXT_RESET}"
+          
+          echo  -e "${TEXT_CYAN} Need to configure Nginx ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} Terminal... ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} sudo nano /etc/nginx/sites-available/default ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} Add index.php to the list if you are using PHP ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} Uncomment ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} location ~ \.php$ { ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} include snippets/fastcgi-php.conf; ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} fastcgi_pass unix:/run/php/php8.2-fpm.sock; ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} } ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} sudo nginx -t ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} sudo systemctl restart nginx.service ${TEXT_RESET}"
+          echo  -e "${TEXT_CYAN} Test any php file ${TEXT_RESET}"
+      ;;
+    
+    2)
+      echo -e "${TEXT_PURPLE} Uninstalling... ${TEXT_RESET}"
+      sudo apt --purge remove php*;
+      sudo apt autoclean;
+      sudo apt autoremove;
+      ;;
+
+    *)
+      echo -e "${TEXT_PURPLE} Skipping... ${TEXT_RESET}"
+      ;;
+
+    esac
+}
+
+
+
 
 actionGit() {
   echo -e "\n ${TEXT_GREEN} INSTALLATION Git.\n  Select 1 = Install,\n 2 = Uninstall,\n S = Skip\n ${TEXT_RESET}"
@@ -986,7 +1030,8 @@ actionApache
 actionNginx
 actionMySql
 actionMySqlSecure
-actionPhpForNginx
+actionPhp7.4ForNginx
+actionPhp8.2ForNginx
 actionGit
 #actionPhpmyadmin
 
