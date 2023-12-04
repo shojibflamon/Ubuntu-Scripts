@@ -858,6 +858,31 @@ installRedisPhp8.2Extension() {
     esac
 }
 
+installRedisPhp7.4Extension() {
+  echo -e "\n ${TEXT_GREEN} INSTALLATION Redis PHP7.4 extension.\n  Select 1 = Install,\n 2 = Uninstall,\n S = Skip\n ${TEXT_RESET}"
+  read action
+    case $action in
+    1)
+      echo -e "${TEXT_PURPLE} Installing Redis PHP extension... ${TEXT_RESET}"
+      sudo apt install php7.4-redis;
+      echo  -e "${TEXT_CYAN} Installation Redis PHP extension Done... ${TEXT_RESET}"
+      ;;
+
+    2)
+      echo -e "${TEXT_PURPLE} Uninstalling... ${TEXT_RESET}"
+      sudo apt --purge remove php7.4-redis
+
+      sudo apt autoclean;
+      sudo apt autoremove;
+      ;;
+
+    *)
+      echo -e "${TEXT_PURPLE} Skipping... ${TEXT_RESET}"
+      ;;
+
+    esac
+}
+
 actionOhMyZsh() {
   echo -e "\n ${TEXT_GREEN} INSTALLATION Oh My Zsh.\n  Select 1 = Install,\n 2 = Uninstall,\n S = Skip\n ${TEXT_RESET}"
   read action
@@ -1119,6 +1144,7 @@ installComposer
 installJava
 installJavaJdk
 installRedis
+installRedisPhp7.4Extension
 installRedisPhp8.2Extension
 
 
