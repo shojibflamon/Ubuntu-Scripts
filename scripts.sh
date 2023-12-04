@@ -806,30 +806,32 @@ actionOhMyZsh() {
   read action
     case $action in
     1)
-#      echo -e "${TEXT_PURPLE} Installing ZSH... ${TEXT_RESET}"
-#          sudo apt install zsh;
-#      echo  -e "${TEXT_CYAN} Installation ZSH Done... ${TEXT_RESET}"
-#
-#      echo  -e "${TEXT_CYAN} Checking ZSH Version... ${TEXT_RESET}"
-#          zsh --version
-#
-#      echo  -e "${TEXT_CYAN} Making ZSH as a default shell... ${TEXT_RESET}"
-#      echo -e "${TEXT_CYAN} Current shell: ${SHELL} ${TEXT_RESET}"
-#          which zsh
-#          chsh -s $(which zsh)
-#      echo $SHELL
-#      echo -e "${TEXT_CYAN} Current shell: ${SHELL} ${TEXT_RESET}"
-#
-#      echo  -e "${TEXT_CYAN} Installation Oh My Zsh... ${TEXT_RESET}"
-#          sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
-#      echo  -e "${TEXT_CYAN} Installation Done... ${TEXT_RESET}"
+      # step 1: install
+
+      echo -e "${TEXT_PURPLE} Installing ZSH... ${TEXT_RESET}"
+          sudo apt install zsh;
+      echo  -e "${TEXT_CYAN} Installation ZSH Done... ${TEXT_RESET}"
+
+      echo  -e "${TEXT_CYAN} Checking ZSH Version... ${TEXT_RESET}"
+          zsh --version
+
+      echo  -e "${TEXT_CYAN} Making ZSH as a default shell... ${TEXT_RESET}"
+      echo -e "${TEXT_CYAN} Current shell: ${SHELL} ${TEXT_RESET}"
+          which zsh
+          chsh -s $(which zsh)
+      echo $SHELL
+      echo -e "${TEXT_CYAN} Current shell: ${SHELL} ${TEXT_RESET}"
+
+      echo  -e "${TEXT_CYAN} Installation Oh My Zsh... ${TEXT_RESET}"
+          sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
+      echo  -e "${TEXT_CYAN} Installation Done... ${TEXT_RESET}"
 
 
 
 
 
 
-
+      # step 2: comment step 1 & uncomment step 2
 #      echo  -e "${TEXT_CYAN} Installation Syntax Highlighting Plugin... ${TEXT_RESET}"
 #          git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 #      echo  -e "${TEXT_CYAN} Installation Syntax Highlighting Plugin Done... ${TEXT_RESET}"
@@ -845,18 +847,31 @@ actionOhMyZsh() {
 #            zsh-autosuggestions
 #            ) ${TEXT_RESET}"
 #
+#
+#      zshrc_path="$HOME/.zshrc"
+#      old_plugins='plugins=(git)'
+#      new_plugins='plugins=(git zsh-syntax-highlighting zsh-autosuggestions)'
+#
+#      sed -i "s/$old_plugins/$new_plugins/g" "$zshrc_path"
+#
+#      echo "Plugins configuration updated successfully."
+#
+#
+#      echo  -e "${TEXT_CYAN} Installation powerlevel10k theme... ${TEXT_RESET}"
+#          git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+#      echo  -e "${TEXT_CYAN} Installation powerlevel10k theme done... ${TEXT_RESET}"
+#
+#      echo  -e "${TEXT_CYAN} Now open .zshrc file and update following line
+#          ZSH_THEME=\"powerlevel10k/powerlevel10k\"
+#          ${TEXT_RESET}"
+#
+#        old_theme='ZSH_THEME="robbyrussell"'
+#        new_theme='ZSH_THEME="powerlevel10k/powerlevel10k"'
+#        sed -i "s|$old_theme|$new_theme|g" "$zshrc_path"
 
-
-
-
-      echo  -e "${TEXT_CYAN} Installation powerlevel10k theme... ${TEXT_RESET}"
-          git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
-      echo  -e "${TEXT_CYAN} Installation powerlevel10k theme done... ${TEXT_RESET}"
-
-      echo  -e "${TEXT_CYAN} Now open .zshrc file and update following line
-          ZSH_THEME=\"powerlevel10k/powerlevel10k\"
-          ${TEXT_RESET}"
-
+      # step 3: comment step 2 & uncomment step 3
+      # Install font before p10k configuration
+      # https://github.com/romkatv/powerlevel10k#manual-font-installation
 ##          p10k configure
 
       echo  -e "${TEXT_CYAN} Installation Oh My Zsh Done... ${TEXT_RESET}"
