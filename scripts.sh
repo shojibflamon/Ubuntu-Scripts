@@ -801,6 +801,63 @@ installWget() {
     esac
 }
 
+installRedis() {
+  echo -e "\n ${TEXT_GREEN} INSTALLATION Redis Cache.\n  Select 1 = Install,\n 2 = Uninstall,\n S = Skip\n ${TEXT_RESET}"
+  read action
+    case $action in
+    1)
+
+      echo -e "${TEXT_PURPLE} Installing Redis Server... ${TEXT_RESET}"
+      sudo apt install redis-server;
+      echo  -e "${TEXT_CYAN} Installation Redis Server Done... ${TEXT_RESET}"
+
+      echo -e "${TEXT_PURPLE} Installing Redis Tools that can achieve redis-cli cli interface... ${TEXT_RESET}"
+      sudo apt install redis-tools;
+      echo  -e "${TEXT_CYAN} Installation Redis Tools Done... ${TEXT_RESET}"
+
+      ;;
+
+    2)
+      echo -e "${TEXT_PURPLE} Uninstalling... ${TEXT_RESET}"
+      sudo apt --purge remove redis-server;
+      sudo apt --purge remove redis-tools;
+
+      sudo apt autoclean;
+      sudo apt autoremove;
+      ;;
+
+    *)
+      echo -e "${TEXT_PURPLE} Skipping... ${TEXT_RESET}"
+      ;;
+
+    esac
+}
+
+installRedisPhp8.2Extension() {
+  echo -e "\n ${TEXT_GREEN} INSTALLATION Redis PHP8.2 extension.\n  Select 1 = Install,\n 2 = Uninstall,\n S = Skip\n ${TEXT_RESET}"
+  read action
+    case $action in
+    1)
+      echo -e "${TEXT_PURPLE} Installing Redis PHP extension... ${TEXT_RESET}"
+      sudo apt install php8.2-redis;
+      echo  -e "${TEXT_CYAN} Installation Redis PHP extension Done... ${TEXT_RESET}"
+      ;;
+
+    2)
+      echo -e "${TEXT_PURPLE} Uninstalling... ${TEXT_RESET}"
+      sudo apt --purge remove php8.2-redis
+
+      sudo apt autoclean;
+      sudo apt autoremove;
+      ;;
+
+    *)
+      echo -e "${TEXT_PURPLE} Skipping... ${TEXT_RESET}"
+      ;;
+
+    esac
+}
+
 actionOhMyZsh() {
   echo -e "\n ${TEXT_GREEN} INSTALLATION Oh My Zsh.\n  Select 1 = Install,\n 2 = Uninstall,\n S = Skip\n ${TEXT_RESET}"
   read action
@@ -1061,6 +1118,8 @@ installTerminus
 installComposer
 installJava
 installJavaJdk
+installRedis
+installRedisPhp8.2Extension
 
 
 
