@@ -819,7 +819,7 @@ actionOhMyZsh() {
       echo -e "${TEXT_CYAN} Current shell: ${SHELL} ${TEXT_RESET}"
           which zsh
           chsh -s $(which zsh)
-      echo $SHELL
+          echo $SHELL
       echo -e "${TEXT_CYAN} Current shell: ${SHELL} ${TEXT_RESET}"
 
       echo  -e "${TEXT_CYAN} Installation Oh My Zsh... ${TEXT_RESET}"
