@@ -575,13 +575,15 @@ actionPhp7.4ForNginx() {
 
 
 actionPhp8.2ForNginx() {
-  echo -e "\n ${TEXT_GREEN} INSTALLATION PHP 8.2 with php8.2-fpm, php8.2-cli, php8.2-gd, php8.2-common, php8.2-opcache, php8.2-readline, php8.2-mbstring, php8.2-bcmath, php8.2-zip, php8.2-mysql, php8.2-curl & php8.2-xml extension for Nginx.\n  Select 1 = Install,\n 2 = Uninstall,\n S = Skip\n ${TEXT_RESET}"
+  echo -e "\n ${TEXT_GREEN} INSTALLATION PHP 8.2 with php8.2-intl, php8.2-fpm, php8.2-cli, php8.2-gd, php8.2-common, php8.2-opcache, php8.2-readline, php8.2-mbstring, php8
+  .2-bcmath, php8.2-zip, php8.2-mysql, php8.2-sqlite3, php8.2-curl & php8.2-xml extension for Nginx.\n  Select 1 = Install,\n 2 = Uninstall,\n S = Skip\n ${TEXT_RESET}"
   read action
     case $action in
     1) 
       echo -e "${TEXT_PURPLE} Installing... ${TEXT_RESET}"
       	  sudo add-apt-repository ppa:ondrej/php;
-          sudo apt install php8.2-fpm php8.2-cli php8.2-gd php8.2-common php8.2-opcache php8.2-readline php8.2-mbstring php8.2-bcmath php8.2-zip php8.2-mysql php8.2-curl php8.2-xml;
+          sudo apt install php8.2-intl php8.2-fpm php8.2-cli php8.2-gd php8.2-common php8.2-opcache php8.2-readline php8.2-mbstring php8.2-bcmath php8.2-zip php8.2-mysql php8
+          .2-sqlite3 php8.2-curl php8.2-xml;
           echo  -e "${TEXT_CYAN} Installation Done... ${TEXT_RESET}"
           
           echo  -e "${TEXT_CYAN} Need to configure Nginx ${TEXT_RESET}"
